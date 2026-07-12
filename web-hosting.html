@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>FlexHost · Pay‑As‑You‑Go Web Hosting</title>
+  <!-- SEO Meta -->
+  <meta name="description" content="Launch your website instantly with FlexHost. Pay only for what you use, no contracts. Dynamic hosting tool with AdSense ready.">
+  <meta name="keywords" content="web hosting, pay as you go, cloud hosting, flexible hosting, AdSense, website tool">
+  <link rel="canonical" href="https://flexhost.example.com/">
+  <!-- Open Graph -->
+  <meta property="og:title" content="FlexHost – Dynamic Pay‑As‑You‑Go Hosting">
+  <meta property="og:description" content="Host your site with zero commitment. Scale on demand.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flexhost.example.com/">
+  <meta name="robots" content="index, follow">
+  <!-- Google Fonts + Font Awesome (lightweight) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: #f8faff;
+      color: #1a1f36;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    /* header */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #2563eb;
+    }
+    .logo i {
+      margin-right: 8px;
+      color: #3b82f6;
+    }
+    .tagline {
+      color: #475569;
+      font-weight: 400;
+      font-size: 0.95rem;
+    }
+    /* Ad unit - top (AdSense placeholder) */
+    .ad-container {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px dashed #cbd5e1;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s;
+      background: #fafcff;
+    }
+    .ad-container .ad-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .ad-container .ad-unit-placeholder {
+      font-size: 0.9rem;
+      color: #334155;
+      background: #f1f5f9;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+    .ad-container .ad-unit-placeholder i {
+      margin-right: 6px;
+      color: #2563eb;
+    }
+    /* main grid */
+    .hosting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .hosting-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+    /* left: control panel */
+    .control-panel {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+      border: 1px solid #edf2f7;
+    }
+    .panel-title {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .panel-title i {
+      color: #2563eb;
+      font-size: 1.8rem;
+    }
+    .slider-group {
+      margin: 2rem 0 1.5rem;
+    }
+    .slider-group label {
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      color: #1e293b;
+    }
+    .slider-group input[type="range"] {
+      width: 100%;
+      margin: 0.5rem 0 0.2rem;
+      height: 8px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: #dbeafe;
+      border-radius: 12px;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      background: #2563eb;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      border: 2px solid white;
+    }
+    .value-display {
+      font-weight: 600;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+    .plan-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .plan-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 0.9rem 1.4rem;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .plan-card.active {
+      border-color: #2563eb;
+      background: #eff6ff;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    }
+    .plan-card i {
+      font-size: 1.4rem;
+      width: 2rem;
+      color: #2563eb;
+    }
+    .plan-card .plan-name {
+      font-weight: 600;
+      flex: 1;
+    }
+    .plan-card .plan-price {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .plan-card .plan-price small {
+      font-weight: 400;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+    .dynamic-cost {
+      background: #f1f5f9;
+      border-radius: 60px;
+      padding: 0.8rem 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 600;
+      margin: 0.5rem 0 1.2rem;
+    }
+    .dynamic-cost span {
+      font-size: 1.8rem;
+      color: #2563eb;
+    }
+    .btn-host {
+      background: #2563eb;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.15s;
+      box-shadow: 0 8px 18px rgba(37,99,235,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-host:hover {
+      background: #1d4ed8;
+      transform: scale(1.01);
+    }
+    .btn-host i {
+      font-size: 1.2rem;
+    }
+    .toast-msg {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      background: #e6f7e6;
+      color: #0b5e0b;
+      text-align: center;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .toast-msg.show {
+      display: block;
+    }
+    /* right: info + ads */
+    .info-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      border: 1px solid #edf2f7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .feature-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+    .feature-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .feature-card li {
+      padding: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #334155;
+    }
+    .feature-card li i {
+      color: #2563eb;
+      width: 1.4rem;
+    }
+    .ad-placeholder-bottom {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px dashed #cbd5e1;
+      padding: 1.2rem;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #fafcff;
+    }
+    .ad-placeholder-bottom .ad-label {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      letter-spacing: 1px;
+    }
+    .adsense-code-area {
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .adsense-code-area label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .adsense-code-area input {
+      flex: 1;
+      min-width: 180px;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #d1d9e6;
+      background: white;
+      font-size: 0.9rem;
+    }
+    .adsense-code-area input:focus {
+      outline: 2px solid #2563eb;
+      border-color: transparent;
+    }
+    .small-note {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .footer {
+      margin-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      padding: 2rem 0 1rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .flex {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .badge {
+      background: #dbeafe;
+      color: #1e4b8f;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    /* responsive fine-tune */
+    @media (max-width: 480px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+      .control-panel {
+        padding: 1.5rem 1rem;
+      }
+      .plan-card {
+        padding: 0.7rem 1rem;
+      }
+      .dynamic-cost span {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-cloud-upload-alt"></i> FlexHost
+    </div>
+    <div class="tagline">
+      <i class="fas fa-bolt" style="color: #f59e0b;"></i> Pay-as-you-go · No lock-in
+    </div>
+  </header>
+
+  <!-- AdSense Top (placeholder) -->
+  <div class="ad-container" id="adTop">
+    <div class="ad-label"><i class="fas fa-ad"></i> Advertisements</div>
+    <div class="ad-unit-placeholder">
+      <i class="fas fa-code"></i> AdSense Unit · ID: <span id="adUnitDisplay">ca-pub-xxxxxxxxxx</span>
+    </div>
+    <!-- Insert your AdSense code here: 
+         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxx" data-ad-slot="1234567890" data-ad-format="auto"></ins>
+    -->
+  </div>
+
+  <!-- Main Grid -->
+  <div class="hosting-grid">
+    <!-- LEFT: dynamic tool -->
+    <section class="control-panel" aria-label="Hosting control panel">
+      <div class="panel-title">
+        <i class="fas fa-sliders-h"></i> Host your site
+      </div>
+      <p style="color: #475569; margin-bottom: 0.5rem;">Choose your usage – pay only for what you need.</p>
+
+      <!-- Slider: storage -->
+      <div class="slider-group">
+        <label>
+          <span><i class="fas fa-database"></i> Storage</span>
+          <span class="value-display" id="storageValue">10 GB</span>
+        </label>
+        <input type="range" id="storageSlider" min="5" max="100" value="10" step="5">
+      </div>
+
+      <!-- Slider: bandwidth -->
+      <div class="slider-group">
+        <label>
+          <span><i class="fas fa-globe"></i> Bandwidth</span>
+          <span class="value-display" id="bandwidthValue">50 GB</span>
+        </label>
+        <input type="range" id="bandwidthSlider" min="10" max="500" value="50" step="10">
+      </div>
+
+      <!-- Plan selection (dynamic) -->
+      <div class="plan-options" id="planOptions">
+        <div class="plan-card active" data-plan="basic" data-price="9">
+          <i class="fas fa-leaf"></i>
+          <span class="plan-name">Basic</span>
+          <span class="plan-price">$9 <small>/mo</small></span>
+        </div>
+        <div class="plan-card" data-plan="pro" data-price="19">
+          <i class="fas fa-rocket"></i>
+          <span class="plan-name">Pro</span>
+          <span class="plan-price">$19 <small>/mo</small></span>
+        </div>
+        <div class="plan-card" data-plan="business" data-price="39">
+          <i class="fas fa-building"></i>
+          <span class="plan-name">Business</span>
+          <span class="plan-price">$39 <small>/mo</small></span>
+        </div>
+      </div>
+
+      <!-- Dynamic cost display -->
+      <div class="dynamic-cost">
+        <i class="fas fa-tag"></i> Estimated: <span id="estimatedCost">$9.00</span> / month
+      </div>
+
+      <!-- Host button -->
+      <button class="btn-host" id="hostButton">
+        <i class="fas fa-play"></i> Launch Hosting
+      </button>
+      <div id="toastMessage" class="toast-msg">✅ Site is live! (simulated)</div>
+
+      <!-- AdSense ID insertion (user-friendly) -->
+      <div class="adsense-code-area">
+        <label for="adsenseId"><i class="fab fa-google"></i> Ad Unit ID</label>
+        <input type="text" id="adsenseId" value="ca-pub-xxxxxxxxxx" placeholder="ca-pub-xxxx">
+        <button id="updateAdButton" style="background: #e2e8f0; border: none; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 500; cursor: pointer;">Update</button>
+      </div>
+      <div class="small-note"><i class="fas fa-info-circle"></i> Insert your AdSense publisher ID to monetize.</div>
+    </section>
+
+    <!-- RIGHT: information & ads -->
+    <aside class="info-side">
+      <div class="feature-card">
+        <h3><i class="fas fa-check-circle" style="color: #2563eb;"></i> Why FlexHost?</h3>
+        <ul>
+          <li><i class="fas fa-infinity"></i> Pay only for what you consume</li>
+          <li><i class="fas fa-tachometer-alt"></i> Scale up/down in real time</li>
+          <li><i class="fas fa-lock"></i> Free SSL &amp; daily backups</li>
+          <li><i class="fas fa-code"></i> Developer-friendly (SSH, Git)</li>
+        </ul>
+      </div>
+
+      <!-- AdSense bottom placeholder -->
+      <div class="ad-placeholder-bottom" id="adBottom">
+        <div class="ad-label"><i class="fas fa-ad"></i> Sponsored</div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; padding: 0.5rem 0;">
+          <span style="background: #eef2ff; padding: 0.2rem 1.2rem; border-radius: 40px; font-size: 0.9rem;"><i class="fas fa-google"></i> AdSense</span>
+          <span style="color: #1e293b;">Your ad here · <span id="bottomAdId">ca-pub-xxxxxxxxxx</span></span>
+        </div>
+        <!-- insert AdSense code here -->
+      </div>
+
+      <div style="background: #ffffff; border-radius: 20px; padding: 1rem; border: 1px solid #edf2f7;">
+        <p style="display: flex; gap: 8px; align-items: center; color: #0f172a;"><i class="fas fa-shield-alt" style="color: #2563eb;"></i> <strong>SEO optimized</strong> – dynamic meta, semantic HTML, fast.</p>
+        <p style="font-size: 0.9rem; color: #475569;"><i class="fas fa-chart-line"></i> Boost visibility with clean code &amp; structured data.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>&copy; 2026 FlexHost · pay-as-you-go hosting</span>
+    <span>
+      <i class="fas fa-ad"></i> AdSense ready · <a href="#" onclick="return false;">Monetize</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // DOM refs
+    const storageSlider = document.getElementById('storageSlider');
+    const bandwidthSlider = document.getElementById('bandwidthSlider');
+    const storageValue = document.getElementById('storageValue');
+    const bandwidthValue = document.getElementById('bandwidthValue');
+    const estimatedCost = document.getElementById('estimatedCost');
+    const planCards = document.querySelectorAll('.plan-card');
+    const hostBtn = document.getElementById('hostButton');
+    const toast = document.getElementById('toastMessage');
+    const adUnitDisplay = document.getElementById('adUnitDisplay');
+    const bottomAdId = document.getElementById('bottomAdId');
+    const adsenseInput = document.getElementById('adsenseId');
+    const updateAdBtn = document.getElementById('updateAdButton');
+
+    // current plan price
+    let currentPlanPrice = 9; // default basic
+
+    // update cost function
+    function updateCost() {
+      const storage = parseInt(storageSlider.value, 10);
+      const bandwidth = parseInt(bandwidthSlider.value, 10);
+      // dynamic factor: base plan + extra for storage/bandwidth
+      const extraStorage = Math.max(0, storage - 10) * 0.15;
+      const extraBandwidth = Math.max(0, bandwidth - 50) * 0.04;
+      let total = currentPlanPrice + extraStorage + extraBandwidth;
+      total = Math.round(total * 100) / 100;
+      estimatedCost.textContent = total.toFixed(2);
+      // update value displays
+      storageValue.textContent = storage + ' GB';
+      bandwidthValue.textContent = bandwidth + ' GB';
+    }
+
+    // plan selection
+    planCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        planCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        const price = parseFloat(this.dataset.price);
+        if (!isNaN(price)) {
+          currentPlanPrice = price;
+          updateCost();
+        }
+      });
+    });
+
+    // slider events
+    storageSlider.addEventListener('input', updateCost);
+    bandwidthSlider.addEventListener('input', updateCost);
+
+    // host button (dynamic feedback)
+    hostBtn.addEventListener('click', function() {
+      const cost = estimatedCost.textContent;
+      toast.textContent = `✅ Hosting launched! Estimated $${cost}/mo (simulated)`;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    });
+
+    // AdSense ID updater (sync both top & bottom placeholders)
+    function updateAdIds(newId) {
+      if (newId.trim() === '') return;
+      const id = newId.trim();
+      adUnitDisplay.textContent = id;
+      bottomAdId.textContent = id;
+      // also store in localStorage if you want
+    }
+
+    updateAdBtn.addEventListener('click', function() {
+      const newId = adsenseInput.value.trim();
+      if (newId) {
+        updateAdIds(newId);
+        // show quick feedback
+        updateAdBtn.textContent = '✓ Updated';
+        setTimeout(() => { updateAdBtn.textContent = 'Update'; }, 1500);
+      } else {
+        alert('Please enter a valid Ad Unit ID (e.g., ca-pub-xxxx)');
+      }
+    });
+
+    // also update on input change (optional)
+    adsenseInput.addEventListener('change', function() {
+      // just to demonstrate, but we use button
+    });
+
+    // init: set default values and cost
+    updateCost();
+
+    // extra: set initial AdSense display from input default
+    updateAdIds(adsenseInput.value);
+
+    // add some dynamic SEO (optional) — already in meta
+    console.log('FlexHost ready – SEO optimized, AdSense integrated.');
+  })();
+</script>
+
+<!-- Google AdSense snippet (example) - uncomment and replace with your code 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxx" crossorigin="anonymous"></script>
+-->
+</body>
+  </html>
