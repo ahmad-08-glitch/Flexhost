@@ -1,0 +1,62 @@
+<style>
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 3rem 0 0.5rem;
+    letter-spacing: -0.5px;
+  }
+  .section-sub {
+    color: #475569;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin: 1rem 0 2.5rem;
+  }
+  .tool-card {
+    background: white;
+    border-radius: 32px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    border: 1px solid #edf2f7;
+    transition: 0.25s;
+    cursor: default;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .tool-card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 20px 30px -10px rgba(0,0,0,0.06); 
+    border-color: #dbeafe; 
+  }
+  .tool-card .icon-wrap {
+    background: #eef2ff;
+    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 1.2rem;
+  }
+  .tool-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .tool-card p { color: #475569; font-size: 0.95rem; }
+  .one-click-badge {
+    background: #d1fae5;
+    color: #065f46;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 1rem;
+    border-radius: 40px;
+    display: inline-block;
+    margin-top: 0.8rem;
+    letter-spacing: 0.3px;
+  }
+  .one-click-badge i { margin-right: 4px; }
