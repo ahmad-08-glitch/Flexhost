@@ -1,0 +1,10 @@
+div class="trust-row">
+  <!-- Stat 1: Websites Built -->
+  <a href="https://aiforge.example.com/showcase" class="stat">
+    <i class="fas fa-globe"></i>
+    <div>
+      <strong>50K+</strong>
+      <div class="label">Websites Built</div>
+    </div>
+    <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+  </a>
